@@ -1,12 +1,19 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = () => {
     const [show, setShow] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setSearchValue(e.target.value);
+        navigate(`/search?q=${e.target.value}`);
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            console.log(window.scrollY);
             if(window.scrollY > 50) {
                 setShow(true);
             } else {
@@ -25,6 +32,11 @@ const Nav = () => {
                     className = "nav__logo"
                     onClick = {() => window.location.reload()}
                 />
+                <InputSearch value = {searchValue} 
+                    onChange={handleChange} 
+                    className="nav__input" 
+                    type ="text" 
+                    placeholder = "Search" />
                 <img alt="User logged"
                     src = "https://occ-0-4796-988.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41"
                     className='nav__avatar'
@@ -58,6 +70,17 @@ const NavBar = styled.div`
         object-fit : contain;
     }
 `
+
+const InputSearch = styled.input`
+    position: fixed;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color : white;
+    padding: 5px;
+    border: none;
+    transform: translateX(-50%, 0);
+
+`;
 
 
 export default Nav;
