@@ -58,8 +58,6 @@ const Banner = () => {
     
 };
 
-
-//이새기 갑자기 왜되는지 확인
 const BannerHeader = styled.div`
     background-image : ${(props) => `url(${`https://image.tmdb.org/t/p/original/${props.movieimg}`})`}; 
     background-size: cover;

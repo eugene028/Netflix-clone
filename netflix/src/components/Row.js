@@ -20,6 +20,7 @@ const Row = ({title, id, fetchUrl, isLargeRow}) => {
         setModalOpen(true);
         setMovieSelected(movie);
     }
+    console.log(movieSelected);
 
     return (
         <>
@@ -28,7 +29,6 @@ const Row = ({title, id, fetchUrl, isLargeRow}) => {
                 <Slider>
                     <ArrowLeft className = "left">
                         <Arrow onClick ={() => {
-                            console.log(document.getElementById(id).scrollLeft);
                             document.getElementById(id).scrollLeft -= window.innerWidth - 80;
                         }}>{"<"}</Arrow>
                     </ArrowLeft>
